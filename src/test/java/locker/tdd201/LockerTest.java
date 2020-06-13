@@ -19,4 +19,15 @@ public class LockerTest {
         Bag bag = new Bag();
         assertThrows(LockerFullException.class, () -> locker.save(bag));
     }
+
+    @Test
+    public void should_throw_LockerFullException_when_save_given_locker_is_full_by_save_bag_more_than_size() {
+        Locker locker = new Locker(1);
+        Bag bag = new Bag();
+        Bag bag1 = new Bag();
+        locker.save(bag);
+        assertThrows(LockerFullException.class, () -> locker.save(bag1));
+    }
+
+
 }
