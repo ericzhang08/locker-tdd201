@@ -20,6 +20,9 @@ public class Locker {
     }
 
     public Bag get(Ticket ticket) {
+        if(!map.containsKey(ticket)){
+            throw new InvalidTicketException();
+        }
         return map.remove(ticket);
     }
 }

@@ -38,5 +38,12 @@ public class LockerTest {
         assertEquals(bagExpected, bag);
     }
 
+    @Test
+    public void should_throw_invalidTicketException_when_get_given_an_invalid_ticket() {
+        Locker locker = new Locker(1);
+        Ticket ticket = new Ticket();
+        assertThrows(InvalidTicketException.class, () -> locker.get(ticket));
+    }
+
 
 }
