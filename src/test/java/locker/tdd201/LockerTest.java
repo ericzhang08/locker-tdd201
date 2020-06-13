@@ -45,5 +45,13 @@ public class LockerTest {
         assertThrows(InvalidTicketException.class, () -> locker.get(ticket));
     }
 
+    @Test
+    public void should_throw_invalidTicketException_when_get_given_an_reused_ticket() {
+        Locker locker = new Locker(1);
+        Ticket ticket = locker.save(new Bag());
+        locker.get(ticket);
+        assertThrows(InvalidTicketException.class, () -> locker.get(ticket));
+    }
+
 
 }
