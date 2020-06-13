@@ -1,20 +1,25 @@
 package locker.tdd201;
 
-import java.util.HashSet;
+import java.util.HashMap;
 
 public class Locker {
     private int size;
-    private HashSet<Bag> set = new HashSet<>();
+    private HashMap<Ticket, Bag> map = new HashMap<>();
 
     public Locker(int size) {
         this.size = size;
     }
 
     public Ticket save(Bag bag) {
-        if (set.size() >= size) {
+        if (map.size() >= size) {
             throw new LockerFullException("Licker is full");
         }
-        set.add(bag);
-        return new Ticket();
+        Ticket ticket = new Ticket();
+        map.put(ticket, bag);
+        return ticket;
+    }
+
+    public Bag get(Ticket ticket) {
+        return map.remove(ticket);
     }
 }

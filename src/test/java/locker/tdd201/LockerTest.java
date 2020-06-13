@@ -29,5 +29,14 @@ public class LockerTest {
         assertThrows(LockerFullException.class, () -> locker.save(bag1));
     }
 
+    @Test
+    public void should_get_bag_when_get_given_a_valid_ticket() {
+        Locker locker = new Locker(1);
+        Bag bagExpected = new Bag();
+        Ticket ticket = locker.save(bagExpected);
+        Bag bag = locker.get(ticket);
+        assertEquals(bagExpected, bag);
+    }
+
 
 }
