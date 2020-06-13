@@ -12,4 +12,11 @@ public class LockerTest {
         Ticket ticket = locker.save(new Bag());
         assertNotNull(ticket);
     }
+
+    @Test
+    public void should_throw_LockerFullException_when_save_given_locker_is_full_by_init_size_is_zero() {
+        Locker locker = new Locker(0);
+        Bag bag = new Bag();
+        assertThrows(LockerFullException.class, () -> locker.save(bag));
+    }
 }
