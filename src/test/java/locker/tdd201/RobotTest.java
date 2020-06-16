@@ -57,4 +57,11 @@ public class RobotTest {
         assertThrows(InvalidTicketException.class, () ->robot.pickUp(new Ticket()));
     }
 
+    @Test
+    void should_throw_exception_when_pick_up_given_repeat_ticket() {
+        Robot robot = new Robot(Arrays.asList(new Locker(1), new Locker(1)));
+        Ticket ticket = robot.store(new Bag());
+        robot.pickUp(ticket);
+        assertThrows(InvalidTicketException.class, () ->robot.pickUp(ticket));
+    }
 }
