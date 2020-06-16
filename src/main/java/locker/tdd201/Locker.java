@@ -20,7 +20,7 @@ public class Locker {
     }
 
     public Bag pickUp(Ticket ticket) {
-        if(!map.containsKey(ticket)){
+        if(!hasTicket(ticket)){
             throw new InvalidTicketException();
         }
         return map.remove(ticket);
