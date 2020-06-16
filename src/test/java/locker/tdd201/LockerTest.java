@@ -45,5 +45,11 @@ public class LockerTest {
         assertThrows(InvalidTicketException.class, () -> locker.pickUp(ticket));
     }
 
+    @Test
+    public void should_return_true_when_is_full_given_a_full_locker() {
+        Locker locker = new Locker(1);
+        locker.store(new Bag());
+        assertTrue(locker.isFull());
+    }
 
 }

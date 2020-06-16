@@ -25,4 +25,8 @@ public class Locker {
         }
         return map.remove(ticket);
     }
+
+    public boolean isFull() {
+        return true;
+    }
 }
