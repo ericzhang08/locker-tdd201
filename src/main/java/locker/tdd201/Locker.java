@@ -27,6 +27,6 @@ public class Locker {
     }
 
     public boolean isFull() {
-        return true;
+        return map.size() >= size;
     }
 }

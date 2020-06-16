@@ -52,4 +52,11 @@ public class LockerTest {
         assertTrue(locker.isFull());
     }
 
+    @Test
+    public void should_return_false_when_is_full_given_a_locker_is_not_full() {
+        Locker locker = new Locker(1);
+        assertFalse(locker.isFull());
+    }
+
+
 }
