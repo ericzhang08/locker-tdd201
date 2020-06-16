@@ -62,8 +62,15 @@ public class LockerTest {
     public void should_return_true_when_has_ticket_given_a_locker_has_specify_ticker() {
         Locker locker = new Locker(1);
         Ticket ticket = locker.store(new Bag());
-        assertTrue(locker.hasTicker(ticket));
+        assertTrue(locker.hasTicket(ticket));
     }
+
+    @Test
+    public void should_return_false_when_has_ticket_given_an_not_exist_ticket() {
+        Locker locker = new Locker(1);
+        assertFalse(locker.hasTicket(new Ticket()));
+    }
+
 
 
 

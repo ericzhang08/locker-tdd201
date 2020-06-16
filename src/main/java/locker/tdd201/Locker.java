@@ -30,7 +30,7 @@ public class Locker {
         return map.size() >= size;
     }
 
-    public boolean hasTicker(Ticket ticket) {
-        return true;
+    public boolean hasTicket(Ticket ticket) {
+        return map.containsKey(ticket);
     }
 }
