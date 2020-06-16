@@ -58,5 +58,14 @@ public class LockerTest {
         assertFalse(locker.isFull());
     }
 
+    @Test
+    public void should_return_true_when_has_ticket_given_a_locker_has_specify_ticker() {
+        Locker locker = new Locker(1);
+        Ticket ticket = locker.store(new Bag());
+        assertTrue(locker.hasTicker(ticket));
+    }
+
+
+
 
 }

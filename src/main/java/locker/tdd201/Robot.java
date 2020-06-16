@@ -13,4 +13,8 @@ public class Robot {
         return lockers.stream().filter(locker -> !locker.isFull()).
                 findFirst().orElseThrow(AllLockersAreFullException::new).store(bag);
     }
+
+    public Bag pickUp(Ticket ticket) {
+        return null;
+    }
 }

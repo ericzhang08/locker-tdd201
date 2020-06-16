@@ -29,4 +29,8 @@ public class Locker {
     public boolean isFull() {
         return map.size() >= size;
     }
+
+    public boolean hasTicker(Ticket ticket) {
+        return true;
+    }
 }
