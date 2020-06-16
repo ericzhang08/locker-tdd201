@@ -11,7 +11,7 @@ public class Locker {
     }
 
     public Ticket store(Bag bag) {
-        if (map.size() >= size) {
+        if (isFull()) {
             throw new LockerFullException();
         }
         Ticket ticket = new Ticket();
