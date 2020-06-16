@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.concurrent.locks.Lock;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RobotTest {
     @Test
@@ -31,8 +30,19 @@ public class RobotTest {
 
         Ticket ticket = robot.store(bag);
 
-        assertNotNull(ticket);
         assertEquals(bag, secondLocker.pickUp(ticket));
     }
+
+    @Test
+    void should_throw_exception_when_store_given_two_Locker_both_are_full() {
+        Locker firstLocker = new Locker(1);
+        firstLocker.store(new Bag());
+        Locker secondLocker = new Locker(1);
+        secondLocker.store(new Bag());
+        Robot robot = new Robot(Arrays.asList(firstLocker, secondLocker));
+
+        assertThrows(AllLockersAreFullException.class, () -> robot.store(new Bag()));
+    }
+
 
 }
