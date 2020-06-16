@@ -10,16 +10,16 @@ public class Locker {
         this.size = size;
     }
 
-    public Ticket save(Bag bag) {
+    public Ticket store(Bag bag) {
         if (map.size() >= size) {
-            throw new LockerFullException("Licker is full");
+            throw new LockerFullException();
         }
         Ticket ticket = new Ticket();
         map.put(ticket, bag);
         return ticket;
     }
 
-    public Bag get(Ticket ticket) {
+    public Bag pickUp(Ticket ticket) {
         if(!map.containsKey(ticket)){
             throw new InvalidTicketException();
         }
