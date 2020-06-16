@@ -44,7 +44,7 @@ public class RobotTest {
         assertThrows(AllLockersAreFullException.class, () -> robot.store(new Bag()));
     }
 
-//    @Test
+    @Test
     void should_get_bag_when_pick_up_given_a_valid_ticket() {
         Robot robot = new Robot(Arrays.asList(new Locker(1), new Locker(1)));
         Bag bag = new Bag();
