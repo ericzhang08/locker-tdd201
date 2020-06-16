@@ -15,6 +15,7 @@ public class Robot {
     }
 
     public Bag pickUp(Ticket ticket) {
-        return lockers.stream().filter(locker -> locker.hasTicket(ticket)).findFirst().get().pickUp(ticket);
+        return lockers.stream().filter(locker -> locker.hasTicket(ticket)).
+                findFirst().orElseThrow(InvalidTicketException::new).pickUp(ticket);
     }
 }
