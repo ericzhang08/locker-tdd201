@@ -21,7 +21,7 @@ public class RobotTest {
         assertEquals(bag, firstLocker.pickUp(ticket));
     }
 
-//    @Test
+    @Test
     void should_get_ticket_and_save_in_second_locker_when_store_given_two_Locker_first_is_full() {
         Locker firstLocker = new Locker(1);
         firstLocker.store(new Bag());

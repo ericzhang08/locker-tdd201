@@ -10,6 +10,7 @@ public class Robot {
     }
 
     public Ticket store(Bag bag) {
-        return lockers.get(0).store(bag);
+        return lockers.stream().filter(locker -> !locker.isFull()).
+                findFirst().get().store(bag);
     }
 }
