@@ -38,5 +38,3 @@
 - given 有效票据  when 取包包 then 取包成功
 
 - given 一张无效票据 when 取包，then 取包失败，提示非法票据
-
-- given 一张重复使用票据 when 取包 then 取包失败，提示非法票据
