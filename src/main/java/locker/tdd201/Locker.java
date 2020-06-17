@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Locker {
     private int size;
-    private HashMap<Ticket, Bag> map = new HashMap<>();
+    private HashMap<Ticket, Bag> bagRepository = new HashMap<>();
 
     public Locker(int size) {
         this.size = size;
@@ -15,7 +15,7 @@ public class Locker {
             throw new LockerFullException();
         }
         Ticket ticket = new Ticket();
-        map.put(ticket, bag);
+        bagRepository.put(ticket, bag);
         return ticket;
     }
 
@@ -23,14 +23,14 @@ public class Locker {
         if(!hasTicket(ticket)){
             throw new InvalidTicketException();
         }
-        return map.remove(ticket);
+        return bagRepository.remove(ticket);
     }
 
     public boolean isFull() {
-        return map.size() >= size;
+        return bagRepository.size() >= size;
     }
 
     public boolean hasTicket(Ticket ticket) {
-        return map.containsKey(ticket);
+        return bagRepository.containsKey(ticket);
     }
 }
