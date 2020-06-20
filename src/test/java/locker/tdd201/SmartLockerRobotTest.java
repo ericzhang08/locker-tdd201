@@ -61,6 +61,17 @@ public class SmartLockerRobotTest {
 
     }
 
+    @Test
+    void should_get_bag_when_pick_up_given_a_valid_ticket() {
+        Locker moreSpaceLocker = new Locker(2);
+        SmartLockerRobot smartLockerRobot = new SmartLockerRobot(Arrays.asList(moreSpaceLocker, new Locker(1)));
+        Bag bagExpected = new Bag();
+        Ticket ticket = smartLockerRobot.store(bagExpected);
+
+        assertEquals(bagExpected, smartLockerRobot.pickUp(ticket));
+
+    }
+
 
 
 }

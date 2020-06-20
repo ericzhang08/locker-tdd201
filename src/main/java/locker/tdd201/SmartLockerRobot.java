@@ -15,4 +15,8 @@ public class SmartLockerRobot {
                 .max(Comparator.comparingInt(Locker::getUnusedSpace)).
                         orElseThrow(AllLockersAreFullException::new).store(bag);
     }
+
+    public Bag pickUp(Ticket ticket) {
+        return lockerRepository.stream().filter(locker -> locker.hasTicket(ticket)).findFirst().get().pickUp(ticket);
+    }
 }
