@@ -29,11 +29,11 @@
 
 #### tasking
 
-- given robot 管理两个柜子都未满 when 存包 then 存包成功到第一个未满的柜子，拿到ticket
+- given primaryLockerRobot 管理两个柜子都未满 when 存包 then 存包成功到第一个未满的柜子，拿到ticket
 
-- given robot 管理两个柜子第一个满 when 存包 then 存包成功到第二个的柜子，拿到ticket
+- given primaryLockerRobot 管理两个柜子第一个满 when 存包 then 存包成功到第二个的柜子，拿到ticket
 
-- given robot 管理的柜子全满 when 存包 then 存包失败，提示管理的储物柜已满 
+- given primaryLockerRobot 管理的柜子全满 when 存包 then 存包失败，提示管理的储物柜已满 
 
 - given 有效票据  when 取包包 then 取包成功
 

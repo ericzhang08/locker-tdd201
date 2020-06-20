@@ -2,10 +2,10 @@ package locker.tdd201;
 
 import java.util.List;
 
-public class Robot {
+public class PrimaryLockerRobot {
     private final List<Locker> lockers;
 
-    public Robot(List<Locker> lockers) {
+    public PrimaryLockerRobot(List<Locker> lockers) {
         this.lockers = lockers;
     }
 
