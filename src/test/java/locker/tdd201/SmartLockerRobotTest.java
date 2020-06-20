@@ -35,4 +35,19 @@ public class SmartLockerRobotTest {
 
     }
 
+    @Test
+    public void should_store_in_first_locker_when_store_given_first_locker_unused_space_is_equal_to_second() {
+        Locker firstLocker = new Locker(2);
+        SmartLockerRobot smartLockerRobot = new SmartLockerRobot(Arrays.asList(firstLocker, new Locker(2)));
+
+        Bag bag = new Bag();
+        Ticket ticket = smartLockerRobot.store(bag);
+
+        assertNotNull(ticket);
+
+        assertEquals(bag, firstLocker.pickUp(ticket));
+
+    }
+
+
 }
