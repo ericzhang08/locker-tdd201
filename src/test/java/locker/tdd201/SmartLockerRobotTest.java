@@ -3,6 +3,8 @@ package locker.tdd201;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -79,5 +81,15 @@ public class SmartLockerRobotTest {
     }
 
 
+    @Test
+    void should_get_bag_when_pick_up_given_primary_locker_robot_and_smart_locker_robot_manage_the_same_locker_and_primary_store() {
+        List<Locker> lockers = Collections.singletonList(new Locker(1));
+        SmartLockerRobot smartLockerRobot = new SmartLockerRobot(lockers);
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(lockers);
+        Bag bag = new Bag();
+
+        Ticket ticket = primaryLockerRobot.store(bag);
+        assertEquals(bag, smartLockerRobot.pickUp(ticket));
+    }
 
 }
