@@ -33,4 +33,8 @@ public class Locker {
     public boolean hasTicket(Ticket ticket) {
         return bagRepository.containsKey(ticket);
     }
+
+    public int getUnusedSpace() {
+        return size - bagRepository.size() ;
+    }
 }

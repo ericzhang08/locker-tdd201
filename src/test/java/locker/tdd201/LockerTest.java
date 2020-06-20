@@ -71,6 +71,12 @@ public class LockerTest {
         assertFalse(locker.hasTicket(new Ticket()));
     }
 
+    @Test
+    public void should_return_unused_space_when_get_unused_space_given_an_unfilled_locker() {
+        Locker locker = new Locker(1);
+        assertEquals(1, locker.getUnusedSpace());
+    }
+
 
 
 
