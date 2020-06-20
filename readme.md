@@ -29,12 +29,37 @@
 
 #### tasking
 
-- given primaryLockerRobot 管理两个柜子都未满 when 存包 then 存包成功到第一个未满的柜子，拿到ticket
+- given PrimaryLockerRobot 管理两个柜子都未满 when 存包 then 存包成功到第一个未满的柜子，拿到ticket
 
-- given primaryLockerRobot 管理两个柜子第一个满 when 存包 then 存包成功到第二个的柜子，拿到ticket
+- given PrimaryLockerRobot 管理两个柜子第一个满 when 存包 then 存包成功到第二个的柜子，拿到ticket
 
-- given primaryLockerRobot 管理的柜子全满 when 存包 then 存包失败，提示管理的储物柜已满 
+- given PrimaryLockerRobot 管理的柜子全满 when 存包 then 存包失败，提示管理的储物柜已满 
 
 - given 有效票据  when 取包包 then 取包成功
 
 - given 一张无效票据 when 取包，then 取包失败，提示非法票据
+
+
+### 第三次次课
+
+#### tasking
+
+
+- given SmartLockerRobot 管理两个Locker第一个Locker比第二个空格多 when 存包 then 存包成功到第一个的Locker，拿到ticket
+- given SmartLockerRobot 管理两个Locker第二个Locker比第一个空格多 when 存包 then 存包成功到第二个的Locker，拿到ticket
+- given SmartLockerRobot 管理两个Locker空格一样多 when 存包 then 存包成功到第二个的Locker，拿到ticket
+
+- given SmartLockerRobot 管理的柜子全满 when 存包 then 存包失败，提示管理的储物柜已满 
+
+- given SmartLockerRobot 拿到有效票据  when 取包 then 取包成功
+
+- given SmartLockerRobot 拿到一张无效票据 when 取包，then 取包失败，提示非法票据
+ 
+- given PrimaryLockerRobot 和 SmartLockerRobot 同时管理一个Locker SmartLockerRobot拿到PrimaryLockerRobot存包成功的票据 when 取包
+then 取包成功
+
+- given PrimaryLockerRobot 和 SmartLockerRobot 同时管理一个Locker PrimaryLockerRobot拿到SmartLockerRobot存包成功的票据 when 取包
+then 取包成功
+
+ 
+ 
