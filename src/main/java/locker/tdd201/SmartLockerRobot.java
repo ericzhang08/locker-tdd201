@@ -1,5 +1,6 @@
 package locker.tdd201;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class SmartLockerRobot {
@@ -10,6 +11,6 @@ public class SmartLockerRobot {
     }
 
     public Ticket store(Bag bag) {
-        return lockerRepository.get(0).store(bag);
+        return lockerRepository.stream().max(Comparator.comparingInt(Locker::getUnusedSpace)).get().store(bag);
     }
 }
