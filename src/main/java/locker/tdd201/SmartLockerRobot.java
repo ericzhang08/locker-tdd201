@@ -11,6 +11,8 @@ public class SmartLockerRobot {
     }
 
     public Ticket store(Bag bag) {
-        return lockerRepository.stream().max(Comparator.comparingInt(Locker::getUnusedSpace)).get().store(bag);
+        return lockerRepository.stream().filter(locker -> !locker.isFull())
+                .max(Comparator.comparingInt(Locker::getUnusedSpace)).
+                        orElseThrow(AllLockersAreFullException::new).store(bag);
     }
 }
