@@ -92,4 +92,15 @@ public class SmartLockerRobotTest {
         assertEquals(bag, smartLockerRobot.pickUp(ticket));
     }
 
+    @Test
+    void should_get_bag_when_pick_up_given_primary_locker_robot_and_smart_locker_robot_manage_the_same_locker_and_smart_store() {
+        List<Locker> lockers = Collections.singletonList(new Locker(1));
+        SmartLockerRobot smartLockerRobot = new SmartLockerRobot(lockers);
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(lockers);
+        Bag bag = new Bag();
+
+        Ticket ticket = smartLockerRobot.store(bag);
+        assertEquals(bag, primaryLockerRobot.pickUp(ticket));
+    }
+
 }
