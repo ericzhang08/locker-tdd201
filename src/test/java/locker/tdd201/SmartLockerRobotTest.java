@@ -72,6 +72,12 @@ public class SmartLockerRobotTest {
 
     }
 
+    @Test
+    void should_throw_exception_when_pick_up_given_an_invalid_ticket() {
+        SmartLockerRobot smartLockerRobot = new SmartLockerRobot(Arrays.asList(new Locker(1), new Locker(1)));
+        assertThrows(InvalidTicketException.class, () -> smartLockerRobot.pickUp(new Ticket()));
+    }
+
 
 
 }

@@ -17,6 +17,7 @@ public class SmartLockerRobot {
     }
 
     public Bag pickUp(Ticket ticket) {
-        return lockerRepository.stream().filter(locker -> locker.hasTicket(ticket)).findFirst().get().pickUp(ticket);
+        return lockerRepository.stream().filter(locker -> locker.hasTicket(ticket)).
+                findFirst().orElseThrow(InvalidTicketException::new).pickUp(ticket);
     }
 }
