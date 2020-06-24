@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LockerRobotManagerTest {
     @Test
@@ -74,5 +73,16 @@ public class LockerRobotManagerTest {
         Ticket ticket = robotManager.store(bag);
         assertEquals(locker.pickUp(ticket), bag);
     }
+    @Test
+    void should_throw_exception_when_store_given_robot_and_lockers_both_are_full() {
+        Locker firstLocker = new Locker(1);
+        firstLocker.store(new Bag());
+        Locker secondLocker = new Locker(1);
+        secondLocker.store(new Bag());
+        RobotManager robotManager = new RobotManager(Arrays.asList(new PrimaryLockerRobot(Arrays.asList(firstLocker))), Arrays.asList(secondLocker));
+
+        assertThrows(AllLockersAreFullException.class, () -> robotManager.store(new Bag()));
+    }
+
 
 }

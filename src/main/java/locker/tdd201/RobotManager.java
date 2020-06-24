@@ -18,6 +18,6 @@ public class RobotManager {
         if(first.isPresent()){
             return first.get().store(bag);
         }
-        return lockerRepository.stream().filter(locker -> !locker.isFull()).findFirst().get().store(bag);
+        return lockerRepository.stream().filter(locker -> !locker.isFull()).findFirst().orElseThrow(AllLockersAreFullException::new).store(bag);
     }
 }
