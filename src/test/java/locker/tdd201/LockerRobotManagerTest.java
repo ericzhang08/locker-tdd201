@@ -16,6 +16,7 @@ public class LockerRobotManagerTest {
         assertNotNull(ticket);
         assertEquals(smartLockerRobot.pickUp(ticket), bag);
     }
+
     @Test
     void should_store_in_second_robot_and_get_ticket_when_store_given_first_robot_is_full_and_second_is_not_full_() {
         SmartLockerRobot smartLockerRobot = new SmartLockerRobot(Arrays.asList(new Locker(1)));
@@ -73,6 +74,7 @@ public class LockerRobotManagerTest {
         Ticket ticket = robotManager.store(bag);
         assertEquals(locker.pickUp(ticket), bag);
     }
+
     @Test
     void should_throw_exception_when_store_given_robot_and_lockers_both_are_full() {
         Locker firstLocker = new Locker(1);
@@ -82,6 +84,16 @@ public class LockerRobotManagerTest {
         RobotManager robotManager = new RobotManager(Arrays.asList(new PrimaryLockerRobot(Arrays.asList(firstLocker))), Arrays.asList(secondLocker));
 
         assertThrows(AllLockersAreFullException.class, () -> robotManager.store(new Bag()));
+    }
+
+    @Test
+    void should_get_bag_when_pick_up_given_a_locker_and_a_valid_ticket() {
+        RobotManager robotManager = new RobotManager(Arrays.asList(), Arrays.asList(new Locker(1)));
+        Bag bag = new Bag();
+        Ticket ticket = robotManager.store(bag);
+
+        assertEquals(robotManager.pickup(ticket), bag);
+
     }
 
 

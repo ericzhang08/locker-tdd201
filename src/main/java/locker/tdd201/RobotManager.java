@@ -20,4 +20,8 @@ public class RobotManager {
         }
         return lockerRepository.stream().filter(locker -> !locker.isFull()).findFirst().orElseThrow(AllLockersAreFullException::new).store(bag);
     }
+
+    public Bag pickup(Ticket ticket) {
+        return lockerRepository.stream().filter(locker -> locker.hasTicket(ticket)).findFirst().get().pickUp(ticket);
+    }
 }
