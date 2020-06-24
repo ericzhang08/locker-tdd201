@@ -19,4 +19,8 @@ public abstract class LockerRobot {
 
     public abstract Bag pickUp(Ticket ticket);
 
+    public boolean isFull(){
+        return lockerRepository.stream().filter(locker -> !locker.isFull()).findFirst().isEmpty();
+    }
+
 }
