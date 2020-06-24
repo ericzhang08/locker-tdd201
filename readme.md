@@ -40,7 +40,7 @@
 - given 一张无效票据 when 取包，then 取包失败，提示非法票据
 
 
-### 第三次次课
+### 第三次课
 
 #### tasking
 
@@ -60,6 +60,27 @@ then 取包成功
 
 - given PrimaryLockerRobot 和 SmartLockerRobot 同时管理一个Locker PrimaryLockerRobot拿到SmartLockerRobot存包成功的票据 when 取包
 then 取包成功
+
+### 第四次课
+
+- given LockerRobotManager 管理两个未满robot when 存包 then 成功存包到第一个 smartLockerRobot 并返回ticket
+- given LockerRobotManager 管理一个Robot 是满的 and 一个Robot未满 when 存包 then 成功存包到PrimaryLockerRobot 并返回ticket
+
+- given LockerRobotManager 管理两个都未满的locker when 存包 then 成功存包在第一个locker，并返回ticket
+- given LockerRobotManager 管理一个满的locker一个未满的locker when 存包 then 成功存包在第二个locker，并返回ticket
+
+- given LockerRobotManager 管理一个未满Robot 和一个未满的Locker when 存包 then 成功存包在robot，并返回ticket
+- given LockerRobotManager 管理一个满的Robot 和一个未满的locker when 存包 then 成功存包在locker，并返回ticket
+
+- given LockerRobotManager 管理一个满的Robot和一个满的locker when 存包 then 存包失败，提示没有可以存储的位置
+
+- given LockerRobotManager 管理一个locker并拿到有效票据 when 取包 then 取包成功
+- given LockerRobotManager 管理一个Robot并拿到有效票据 when 取包 then 取包成功
+
+- given LockerRobotManager 拿到一张无效票据 when 取包，then 取包失败，提示非法票据
+
+
+
 
  
  
