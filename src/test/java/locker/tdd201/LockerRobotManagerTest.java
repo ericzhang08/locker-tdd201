@@ -96,5 +96,15 @@ public class LockerRobotManagerTest {
 
     }
 
+    @Test
+    void should_get_bag_when_pick_up_given_a_robot_and_a_valid_ticket() {
+        RobotManager robotManager = new RobotManager(Arrays.asList(new PrimaryLockerRobot(Arrays.asList(new Locker(1)))), Arrays.asList());
+        Bag bag = new Bag();
+        Ticket ticket = robotManager.store(bag);
+
+        assertEquals(robotManager.pickup(ticket), bag);
+
+    }
+
 
 }

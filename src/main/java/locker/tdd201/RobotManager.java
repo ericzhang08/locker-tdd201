@@ -22,6 +22,11 @@ public class RobotManager {
     }
 
     public Bag pickup(Ticket ticket) {
-        return lockerRepository.stream().filter(locker -> locker.hasTicket(ticket)).findFirst().get().pickUp(ticket);
+
+        Optional<Locker> locker = lockerRepository.stream().filter(l -> l.hasTicket(ticket)).findFirst();
+        if (locker.isPresent()) {
+            return locker.get().pickUp(ticket);
+        }
+        return robotRepository.stream().filter(l -> l.hasTicket(ticket)).findFirst().get().pickUp(ticket);
     }
 }

@@ -23,4 +23,8 @@ public abstract class LockerRobot {
         return lockerRepository.stream().filter(locker -> !locker.isFull()).findFirst().isEmpty();
     }
 
+    public boolean hasTicket(Ticket ticket) {
+        return lockerRepository.stream().filter(locker -> locker.hasTicket(ticket)).findFirst().isPresent();
+    }
+
 }
