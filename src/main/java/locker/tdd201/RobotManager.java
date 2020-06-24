@@ -15,7 +15,7 @@ public class RobotManager {
 
     public Ticket store(Bag bag) {
         Optional<LockerRobot> first = robotRepository.stream().filter(lockerRobot -> !lockerRobot.isFull()).findFirst();
-        if(first.isPresent()){
+        if (first.isPresent()) {
             return first.get().store(bag);
         }
         return lockerRepository.stream().filter(locker -> !locker.isFull()).findFirst().orElseThrow(AllLockersAreFullException::new).store(bag);
@@ -27,6 +27,6 @@ public class RobotManager {
         if (locker.isPresent()) {
             return locker.get().pickUp(ticket);
         }
-        return robotRepository.stream().filter(l -> l.hasTicket(ticket)).findFirst().get().pickUp(ticket);
+        return robotRepository.stream().filter(l -> l.hasTicket(ticket)).findFirst().orElseThrow(() -> new InvalidTicketException()).pickUp(ticket);
     }
 }

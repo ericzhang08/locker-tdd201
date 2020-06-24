@@ -106,5 +106,14 @@ public class LockerRobotManagerTest {
 
     }
 
+    @Test
+    void should_throw_InvalidTicketException_when_pick_up_given_a_robot_and_a_locker() {
+        RobotManager robotManager = new RobotManager(Arrays.asList(new PrimaryLockerRobot(Arrays.asList(new Locker(1)))), Arrays.asList(new Locker(1)));
+
+
+        assertThrows(InvalidTicketException.class, () ->robotManager.pickup(new Ticket()));
+
+    }
+
 
 }
