@@ -52,4 +52,17 @@ public class LockerRobotManagerTest {
         assertEquals(secondLocker.pickUp(ticket), bag);
     }
 
+
+    @Test
+    void should_store_in_robot_and_get_ticket_when_store_given_one_robot_and_one_locker_both_are_not_full() {
+        PrimaryLockerRobot robot = new PrimaryLockerRobot(Arrays.asList(new Locker(1)));
+        RobotManager robotManager = new RobotManager(Arrays.asList(robot), Arrays.asList(new Locker(1)));
+
+        Bag bag = new Bag();
+        Ticket ticket = robotManager.store(bag);
+        assertEquals(robot.pickUp(ticket), bag);
+    }
+
+
+
 }

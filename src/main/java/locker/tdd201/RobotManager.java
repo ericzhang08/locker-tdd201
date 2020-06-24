@@ -13,7 +13,6 @@ public class RobotManager {
     }
 
 
-
     public Ticket store(Bag bag) {
         Optional<LockerRobot> first = robotRepository.stream().filter(lockerRobot -> !lockerRobot.isFull()).findFirst();
         if(first.isPresent()){
