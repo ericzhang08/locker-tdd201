@@ -92,7 +92,7 @@ public class LockerRobotManagerTest {
         Bag bag = new Bag();
         Ticket ticket = robotManager.store(bag);
 
-        assertEquals(robotManager.pickup(ticket), bag);
+        assertEquals(robotManager.pickUp(ticket), bag);
 
     }
 
@@ -102,7 +102,7 @@ public class LockerRobotManagerTest {
         Bag bag = new Bag();
         Ticket ticket = robotManager.store(bag);
 
-        assertEquals(robotManager.pickup(ticket), bag);
+        assertEquals(robotManager.pickUp(ticket), bag);
 
     }
 
@@ -111,7 +111,7 @@ public class LockerRobotManagerTest {
         RobotManager robotManager = new RobotManager(Arrays.asList(new PrimaryLockerRobot(Arrays.asList(new Locker(1)))), Arrays.asList(new Locker(1)));
 
 
-        assertThrows(InvalidTicketException.class, () ->robotManager.pickup(new Ticket()));
+        assertThrows(InvalidTicketException.class, () ->robotManager.pickUp(new Ticket()));
 
     }
 

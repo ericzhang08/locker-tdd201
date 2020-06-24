@@ -3,13 +3,12 @@ package locker.tdd201;
 import java.util.List;
 import java.util.Optional;
 
-public class RobotManager {
+public class RobotManager extends LockerRobot {
     private List<LockerRobot> robotRepository;
-    private List<Locker> lockerRepository;
 
     public RobotManager(List<LockerRobot> robots, List<Locker> lockers) {
+        super(lockers);
         this.robotRepository = robots;
-        this.lockerRepository = lockers;
     }
 
 
@@ -18,11 +17,11 @@ public class RobotManager {
         if (first.isPresent()) {
             return first.get().store(bag);
         }
-        return lockerRepository.stream().filter(locker -> !locker.isFull()).findFirst().orElseThrow(AllLockersAreFullException::new).store(bag);
+        return super.store(bag);
     }
 
-    public Bag pickup(Ticket ticket) {
-
+    @Override
+    public Bag pickUp(Ticket ticket) {
         Optional<Locker> locker = lockerRepository.stream().filter(l -> l.hasTicket(ticket)).findFirst();
         if (locker.isPresent()) {
             return locker.get().pickUp(ticket);
